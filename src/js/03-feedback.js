@@ -2,49 +2,9 @@ import throttle from 'lodash.throttle';
 
 
 const form = document.querySelector('.feedback-form');
-// const email = document.querySelector('[name="email"]');
-// console.log(email);
-// const message = document.querySelector('[name="message"]');
+const email = document.querySelector('input');
+const message = document.querySelector('textarea');
 
-// const qwe = email.addEventListener("input", (event) => {
-//     console.log(event.currentTarget.value);
-//     return
-// });
-
-// message.addEventListener("input", (event) => {
-//     console.log(event.currentTarget.value);
-//     return
-// });
-
-
-
-// const feedback = {
-//     email: email.addEventListener("input", (event) => {
-//            event.currentTarget.value;
-//     }),
-    
-//     password: message.addEventListener("input", (event) => {
-//     event.currentTarget.value;
-//     })
-  
-// }
-
-// console.log(feedback);
-
-
-// form.addEventListener('input', (event) => {
-//     event.preventDefault();
-    
-//     const [email, message] = event.target.elements;
-//     console.log(email);
-//     console.log(message);
-
-//     resp.email = email.value;
-//     resp.password = password.value;   
-
-
-    
-// })
 
 const formInput = {};
 
@@ -55,21 +15,40 @@ function formInfo(e) {
     const email = e.target;
     const message = e.target;
 
-
     formInput[`${email.name}`] = `${email.value}`;
     formInput[`${message.name}`] = `${email.value}`;
   
-    
-    
-    localStorage.setItem('feedback-form-state', formInput);
-    console.log(formInput);
+    localStorage.setItem('feedback-form-state', JSON.stringify(formInput));
 }
+
+const storageInfo = localStorage.getItem("feedback-form-state");
+console.log(storageInfo);
+
+const parseFormInput = JSON.parse(storageInfo);
+console.log(parseFormInput);
+
+function onInputText() {
+    if (parseFormInput === null ) {
+        return
+    }
+    email.textContent = parseFormInput.email;
+    message.textContent = parseFormInput.message;
+}
+
+
+onInputText();
+    
+
+
 
 form.addEventListener('submit', sendForm);
 
 function sendForm(e) {
     e.preventDefault();
 
+    console.log(formInput);
+    email.textContent = "";
+    message.textContent = "";
     localStorage.clear();
-    e.currentTarget.reset();
+    e.target.reset();
 }
