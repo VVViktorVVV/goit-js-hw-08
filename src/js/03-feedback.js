@@ -16,7 +16,7 @@ function formInfo(e) {
     const message = e.target;
 
     formInput[`${email.name}`] = `${email.value}`;
-    formInput[`${message.name}`] = `${email.value}`;
+    formInput[`${message.name}`] = `${message.value}`;
   
     localStorage.setItem('feedback-form-state', JSON.stringify(formInput));
 }
@@ -35,18 +35,15 @@ function onInputText() {
     message.textContent = parseFormInput.message;
 }
 
+window.onload = onInputText;
 
-onInputText();
     
-
-
-
 form.addEventListener('submit', sendForm);
 
 function sendForm(e) {
     e.preventDefault();
 
-    console.log(formInput);
+    console.log(parseFormInput);
     email.textContent = "";
     message.textContent = "";
     localStorage.clear();
