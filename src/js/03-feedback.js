@@ -22,10 +22,9 @@ function formInfo(e) {
 }
 
 const storageInfo = localStorage.getItem("feedback-form-state");
-console.log(storageInfo);
 
 const parseFormInput = JSON.parse(storageInfo);
-console.log(parseFormInput);
+
 
 function onInputText() {
     if (parseFormInput === null ) {
