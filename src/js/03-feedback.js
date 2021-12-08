@@ -30,8 +30,8 @@ function onInputText() {
     if (parseFormInput === null ) {
         return
     }
-    email.textContent = parseFormInput.email;
-    message.textContent = parseFormInput.message;
+    email.value = parseFormInput.email;
+    message.value = parseFormInput.message;
 }
 
 window.onload = onInputText;
