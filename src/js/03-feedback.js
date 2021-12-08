@@ -43,8 +43,7 @@ function sendForm(e) {
     e.preventDefault();
 
     console.log(parseFormInput);
-    email.textContent = "";
-    message.textContent = "";
+    
     localStorage.clear();
     e.target.reset();
 }
