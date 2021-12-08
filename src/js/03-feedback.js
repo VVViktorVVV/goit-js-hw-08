@@ -34,14 +34,14 @@ function onInputText() {
     message.value = parseFormInput.message;
 }
 
-window.onload = onInputText;
-
+onInputText();
     
 form.addEventListener('submit', sendForm);
 
 function sendForm(e) {
     e.preventDefault();
-
+       
+    
     console.log(parseFormInput);
     
     localStorage.clear();
