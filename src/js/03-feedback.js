@@ -51,9 +51,13 @@ form.addEventListener('submit', sendForm);
 
 function sendForm(e) {
     e.preventDefault();
+
+    if (email.value === '' || message.value === '') {
+        alert('Все поля должны быть заполнены!');
+        return
+    }
        
-    
-    console.log(parseFormInput);
+    console.log(formInput);
     formInput.email = '',
     formInput.message = '',
     localStorage.clear();
